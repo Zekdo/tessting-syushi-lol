@@ -1,0 +1,42 @@
+﻿import pandas as pd
+
+
+# Data for Drinks Menu
+drinks_data = {
+    "Category": ["Draft Beer", "Draft Beer", "Draft Beer", "Draft Beer", "Draft Beer", 
+                 "Bottle Beer", "Bottle Beer", "Bottle Beer", "Bottle Beer", "Bottle Beer", "Bottle Beer",
+                 "House Wine", "House Wine", "House Wine", "House Wine", "House Wine"],
+    "Item": ["Sapporo", "Breaking Bud Double IPA", "Asahi", "Beav Light", "Sunny Little Thing", 
+             "Angry Orchard", "Corona / Guinness / New Castle / Stella Artois", "Torpedo IPA / Blue Moon", 
+             "Large Kirin Ichiban", "Coors Light or Orion (can)", "Large Hot Sake",
+             "Chardonnay", "Pinot Grigio", "Cabernet", "Red Sangria, White Sangria", "Mango Peach Sangria"],
+    "Price": [6.25, 8.25, 7.25, 5.50, 7.00, 
+              5.50, 5.50, 7.95, 8.95, 4.95, 7.50, 
+              7.95, 7.95, 7.95, 7.95, 7.95]
+}
+
+
+# Data for Food Menu
+food_data = {
+    "Category": ["Rolls", "Rolls", "Rolls", "Rolls", "Rolls", 
+                 "Hot Plates", "Hot Plates", "Hot Plates", "Hot Plates", "Hot Plates"],
+    "Item": ["Yummie", "Green Machine", "Golden Kali", "Broadway", "16th Street", 
+             "Gyoza", "Seasoned Fries", "Veggie Tempura", "Shrimp Tempura", "Mama’s Chicken Wing"],
+    "Price": [7.99, 7.99, 7.99, 7.99, 8.99, 
+              7.50, 7.50, 7.50, 8.00, 10.00]
+}
+
+
+# Creating DataFrames
+drinks_df = pd.DataFrame(drinks_data)
+food_df = pd.DataFrame(food_data)
+
+
+# Saving to Excel
+excel_path = "/mnt/data/Happy_Hour_Menu.xlsx"
+with pd.ExcelWriter(excel_path) as writer:
+    drinks_df.to_excel(writer, sheet_name="Drinks Menu", index=False)
+    food_df.to_excel(writer, sheet_name="Food Menu", index=False)
+
+
+excel_path
